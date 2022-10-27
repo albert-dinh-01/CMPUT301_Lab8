@@ -36,11 +36,31 @@ public class CustomListTest {
         assertEquals(list.getCount(),listSize + 1);
     }
 
+    /**
+     * Create the city of Edmonton
+     * Check that Edmonton is in the list of all cities
+     */
     @Test
     public void hasCityTest() {
         list = MockCityList();
         City edmonton = new City("Edmonton", "AB");
         list.addCity(new City("Edmonton", "AB"));
         assertTrue(list.hasCity(edmonton));
+    }
+
+    /**
+     * Create the city of Edmonton
+     * Remove the city of Edmonton
+     * Ensure that the number of cities is 0
+     */
+
+    @Test
+    public void deleteCityTest() {
+        list = MockCityList();
+        City edmonton = new City("Edmonton", "AB");
+        list.addCity(new City("Edmonton", "AB"));
+        assertEquals(1, list.getCount());
+        list.deleteCity(edmonton);
+        assertEquals(0, list.getCount());
     }
 }
